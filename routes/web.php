@@ -5,6 +5,8 @@ use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
+use App\Http\Controllers\PostController;
+
 Route::get('/', function () {
     return Inertia::render('Welcome', [
         'canLogin' => Route::has('login'),
@@ -13,6 +15,9 @@ Route::get('/', function () {
         'phpVersion' => PHP_VERSION,
     ]);
 });
+
+Route::get('/posts', [PostController::class, 'index'])->name('post.index');
+Route::get('/posts/new', [PostController::class, 'new'])->name('post.new');
 
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
