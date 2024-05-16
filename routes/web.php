@@ -19,6 +19,14 @@ Route::get('/', function () {
 Route::get('/posts', [PostController::class, 'index'])->name('post.index');
 Route::get('/posts/new', [PostController::class, 'new'])->name('post.new');
 
+Route::get('/products', function(){
+    return Inertia::render('AllProductComponent');
+});
+
+Route::get('/students', function(){
+    return Inertia::render('AllStudentComponent');
+});
+
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
